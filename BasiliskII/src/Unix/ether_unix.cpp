@@ -323,16 +323,6 @@ bool ether_init(void)
 		printf("selected Ethernet device type sheep_net\n");
 	}
 
-	// Don't raise SIGPIPE, let errno be set to EPIPE
-	struct sigaction sigpipe_sa;
-	if (sigaction(SIGPIPE, NULL, &sigpipe_sa) == 0) {
-		assert(sigpipe_sa.sa_handler == SIG_DFL || sigpipe_sa.sa_handler == SIG_IGN);
-		sigfillset(&sigpipe_sa.sa_mask);
-		sigpipe_sa.sa_flags = 0;
-		sigpipe_sa.sa_handler = SIG_IGN;
-		sigaction(SIGPIPE, &sigpipe_sa, NULL);
-	}
-
 #ifdef HAVE_SLIRP
 	// Initialize slirp library
 	if (net_if_type == NET_IF_SLIRP) {
