@@ -1282,9 +1282,9 @@ int main(void)
 EOF
   doit='$CXX conftest.$ac_ext -o conftest.$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS $LIBS $NATMEM_OFFSET_DEF >& AS_MESSAGE_LOG_FD'
   if AC_TRY_EVAL(doit); then
-    NATMEM_OFFSET=`./conftest.$ac_exeext`
+    NATMEM_OFFSET=0x10000000
   else
-    NATMEM_OFFSET=
+    NATMEM_OFFSET=0x10000000
   fi
   rm -f conftest*
   AC_LANG_RESTORE
